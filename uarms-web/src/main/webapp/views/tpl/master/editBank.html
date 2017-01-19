@@ -1,0 +1,84 @@
+<!--
+<div class="modal-header">
+    <h3 class="modal-title">添加节点</h3>
+</div>
+-->
+<div class="modal-body ">
+	<form name="form" class="form-validation" novalidate>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="h4">{{title}}</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+					<div class="col-sm-6">
+						<label>银行名称<span style="color: red;"> *</span>：</label>
+									 <span class="error-info" ng-if="form.bankName.$dirty && form.bankName.$invalid ">
+                	<span ng-if="form.bankName.$error.required">必须</span>
+                </span> <input
+							type="text" class="form-control" name="bankName"  ng-model="bank.bankName"
+							ng-patten="/^[\u0391-\uFFE5]{2,6}$/" required
+							ng-disabled="eidtMode">
+
+
+					</div>
+					<div class="col-sm-6">
+						<label>银行编号<span style="color: red;"> *</span>：</label>
+						 <span class="error-info" ng-if="form.bankCode.$dirty && form.bankCode.$invalid ">
+                	<span ng-if="form.bankCode.$error.required">必须</span>
+                </span>
+                 <input type="text" class="form-control" ng-disabled="eidtMode"
+							ng-model="bank.bankCode"   name="bankCode" required>
+					</div>
+					<div class="col-sm-6">
+						<label>联系人<span style="color: red;"> *</span>：</span></label>
+							 <span class="error-info" ng-if="form.contactName.$dirty && form.contactName.$invalid ">
+							 
+                	<span ng-if="form.contactName.$error.required">必须</span>
+                </span> <input
+							type="text" class="form-control" name="contactName" ng-model="bank.contactName"
+							required>
+					</div>
+
+					<div class="col-sm-6">
+						<label>联系人电话<span style="color: red;"> *</span>： </span></label><span class="error-info"
+								ng-if="(form.contactPhone.$dirty|| submitTried) && form.contactPhone.$invalid ">
+								
+                	<span ng-if="form.contactPhone.$error.required">必须</span>
+							<span ng-if="form.contactPhone.$error.maxlength">最多20位数</span></span> <input type="text" class="form-control"
+							ng-model="bank.contactPhone" name="contactPhone" ng-maxlength="20"  required>
+					</div>
+					<div class="col-sm-6">
+						<label>银行类型<span style="color: red;"> *</span>： </span></label>
+									 <span class="error-info" ng-if="form.bankType.$dirty && form.bankType.$invalid ">
+                	<span ng-if="form.bankType.$error.required">必须</span>
+                </span>
+						<!-- <input type="text" class="form-control" ng-model="bank.bankType" required >  -->
+						<select class="form-control" name="bankType"  ng-model="bank.bankType" required
+							ng-options="opt.id as opt.name for opt in bankTypes"
+							ng-disabled="eidtMode">
+							<option></option>
+						</select>
+
+					</div>
+					<div class="col-sm-6">
+						<label>银行地址：</label> <input type="text" class="form-control"
+							ng-model="bank.bankAddress">
+					</div>
+
+					<div class="col-sm-6">
+						<label>备注信息：</label> <input type="text" class="form-control"
+							ng-model="bank.notes">
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">取 消</button>
+	<button class="btn btn-success" ng-disabled="form.$invalid"
+		ng-click="save()">确 定</button>
+</div>
