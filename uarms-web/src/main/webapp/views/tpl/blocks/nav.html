@@ -88,41 +88,6 @@
         </a>
       </li>
      </ul>
-     <ul has-any-permission="['BANK_ACCOUNT_CREATE','BANK_ACCOUNT_EDIT','BANK_ACCOUNT_DELETE','BANK_ACCOUNT_VIEW']" class="nav nav-sub dk">
-      <li ui-sref-active="active">
-        <a ui-sref="app.s1.account-mgmt">
-          <span>银行账户管理</span>
-        </a>
-      </li>
-     </ul>
-     <ul has-any-permission="['SELLER_CREATE','SELLER_EDIT','SELLER_DELETE','SELLER_VIEW','SELLER_FINISH']" class="nav nav-sub dk">
-       <li ng-class="{'active':$state.current.name.indexOf('app.s1.seller')>-1}">
-        <a ui-sref="app.s1.seller-list">
-          <span>出卖方管理</span>
-        </a>
-  	  </li>
-   	</ul>
-    <ul has-any-permission="['DICTIONARY_CREATE','DICTIONARY_EDIT','DICTIONARY_DELETE','DICTIONARY_VIEW']" class="nav nav-sub dk">
-	    <li ng-class="{'active':$state.current.name.indexOf('app.s1.dictionary')>-1}">
-	     <a ui-sref="app.s1.dictionary-list">
-	       <span>数据字典</span>
-	     </a>
-	   </li>
-   </ul>
-   <ul has-any-permission="['INTEREST_CREATE','INTEREST_EDIT','INTEREST_DELETE','INTEREST_VIEW']" class="nav nav-sub dk">
-      <li ui-sref-active="active">
-        <a ui-sref="app.s1.interest-mgmt">
-          <span>利率配置</span>
-        </a>
-      </li>
-   </ul>
-   <ul has-any-permission="['CODE_RULE_CREATE','CODE_RULE_EDIT','CODE_RULE_DELETE','CODE_RULE_VIEW']" class="nav nav-sub dk">
-      <li ui-sref-active="active">
-        <a ui-sref="app.s1.coderule-mgmt">
-          <span>编码管理</span>
-        </a>
-      </li>
-    </ul>
   </li>
  
   <li has-permission="MENU_AUTH_MANAGER" ng-class="{active:$state.includes('app.s2')}">
@@ -153,24 +118,6 @@
         <a ui-sref="app.s2.auth-list">
           <span>系统权限一览</span>
         </a>
-      </li>
-    </ul>
-  </li>
-
-   <li has-permission="MENU_DESKTOP" ng-class="{active:$state.includes('app.s3')}">
-    <a href class="auto">      
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="fa icon-screen-desktop icon text-lg text-info-lter"></i>
-      <span class="font-bold">工作台</span>
-    </a>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{'active':$state.current.name.indexOf('app.s3.job')>-1}">
-       	<a ui-sref="app.s3.job-list">
-          	<span>跑批任务</span>
-       	</a>
       </li>
     </ul>
   </li>
