@@ -6,4 +6,4 @@ import com.ray.demo.admin.model.master.BankExample;
 
 public interface BankMapper extends BaseMapper<Bank, BankExample> {
 
-}
+} 
