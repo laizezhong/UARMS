@@ -1,0 +1,95 @@
+<div  ng-controller="EditBankController">
+
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">银行管理</h1>
+</div>
+
+<div class="modal-body " >
+        <form name="form" class="form-validation" novalidate>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span class="h4">{{title}}</span>
+            </div>
+            <div class="panel-body">
+			<div class="form-group pull-in clearfix">
+			
+              <div class="col-sm-6">
+                <label>银行代码: <i class="fa fa-star-o text-danger text-xxs"></i></label>
+                <span class="error-info" ng-show="(form.bankCode.$dirty || submitTried) && form.bankCode.$invalid ">
+                	<!-- <span ng-show="form.bankCode.$error.required">必须</span>  -->
+                	<span ng-show="form.bankCode.$error.minlength || form.bankCode.$error.required">最少3位</span>
+                	<span ng-show="form.bankCode.$error.maxlength">最多10位</span>
+                </span>
+                <input type="text" class="form-control" placeholder="银行代码" ng-model="bank.bankCode" required ng-minlength="3" ng-maxlength="10" name="bankCode"> 
+              </div>
+              <div class="col-sm-6">
+                <label>银行名称: <span style="color:red;"> *</span></label>
+                <span class="error-info" ng-show="(form.bankName.$dirty || submitTried) && form.bankName.$invalid ">
+                	<span ng-show="form.bankName.$error.required">必须</span>
+                </span>
+                <input type="text" class="form-control" ng-model="bank.bankName" required name="bankName">
+              </div>
+              <div class="col-sm-6">
+                <label>类型：</label>
+                 <span class="error-info" ng-show="(form.bankType.$dirty || submitTried) && form.bankType.$invalid ">
+                	<span ng-show="form.bankType.$error.required">必须</span>
+                </span>
+                <!-- <input type="text" class="form-control" ng-model="bank.bankType" required >  -->
+                  <select class="form-control" ng-model="bank.bankType" required name="bankType"
+					ng-options="opt.id as opt.name for opt in bankTypes">
+				<!-- 	<select class="form-control" ng-model="bank.bankType"
+					ng-options="key as value for (key,value) in bankTypes"> -->
+					<option></option>
+				  </select>
+              </div>
+              <div class="col-sm-6">
+                <label>地址：</label>
+                <input type="text" class="form-control" ng-model="bank.bankAddress"  >
+              </div>
+              <div class="col-sm-6">
+                <label>联系人：</label>
+                <input type="text" class="form-control" ng-model="bank.contactName"  >
+              </div>
+              <div class="col-sm-6">
+                <label>联系人电话: <i class="fa fa-asterisk text-xs text-danger"></i></label>
+                <span class="error-info" ng-show="(form.contactPhone.$dirty || submitTried)&& form.contactPhone.$invalid ">
+                	<span ng-show="form.contactPhone.$error.pattern || form.contactPhone.$error.required">8～12位数字</span>
+                </span>
+                <input type="text" class="form-control" ng-model="bank.contactPhone" ng-pattern="/^[0-9]{8,12}$/" required name="contactPhone">
+              </div>
+<!-- 
+				<div class="col-sm-6">
+					<label>成立日期：</label>
+					<span class="error-info" ng-show="form.foundDate.$dirty && form.foundDate.$invalid ">
+	                	<span ng-show="form.foundDate.$error.required">必须</span>
+	                	<span ng-show="form.foundDate.$error.date">非有效日期</span>
+	                </span>
+					<div class="input-group m-d">
+						<input type="text" class="form-control" required ng-model="bank.foundDate" name="foundDate"
+ 						 	datepicker-popup="{{format}}"
+							is-open="foundDate" datepicker-options="dateOptions"
+							close-text="Close"
+						/> 
+						<span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="openDatepicker($event,0)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+ -->
+			</div>
+            </div>
+          </div>
+        </form>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="back()">返回</button>
+	<button class="btn btn-success" ng-click="save(form.$invalid)">确 定</button>
+	<!-- ng-disabled="form.$invalid" -->
+</div>
+
+</div>

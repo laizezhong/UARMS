@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="rayframeworktest" verbose="1">
+
+	<test name="SerialNo">
+	<!-- 
+		<classes>
+			<class
+				name="com.alipay.fc.supergwfront.unitest.CnapsMQ2MBActionTest">
+			</class>
+			<class
+				name="com.alipay.fc.supergwfront.unitest.MQMsgTest">
+			</class>
+		</classes>
+		 -->
+		<packages>
+			<package name="com.ray.framework.base.test" />
+			
+		</packages>
+	</test>
+	
+</suite>

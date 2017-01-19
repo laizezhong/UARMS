@@ -1,0 +1,55 @@
+<!--
+<div class="modal-header">
+    <h3 class="modal-title">添加节点</h3>
+</div>
+-->
+<div class="modal-body ">
+	<form name="form" class="form-validation">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="h4">{{title}}</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+					<div class="col-sm-6">
+						<label>表达式：<span style="color: red;"> *</span></label> <input type="text" class="form-control"
+							ng-model="codeRule.expression" ng-disabled="show">
+					</div>
+				     <div class="col-sm-6">
+                <label>类型：<span style="color: red;"> *</span></label>
+                <!-- <input type="text" class="form-control" ng-model="bank.bankType" required >  -->
+                  <select class="form-control" ng-model="codeRule.type" 
+					ng-options="opt.id as opt.name for opt in types"  ng-disabled="show">
+					  <option></option>
+				  </select>
+				
+              </div>
+					<div class="col-sm-6">
+						<label>流水号：</label> <input type="text" class="form-control"
+							ng-model="codeRule.serial" ng-disabled="show">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>流水线长度：<span style="color: red;"> *</span></label> <input type="text" class="form-control"
+							ng-model="codeRule.serialLength" ng-disabled="show">
+					</div>
+				
+					        <div class="col-sm-6">
+						<label>每年重置：<span style="color: red;"> *</span></label>
+						<div class="radio" >
+							<label class="i-checks i-checks-sm"> <input type="radio"
+								ng-model="codeRule.resetType" value="1"    ng-disabled="show"><i></i>是
+							</label> <label class="i-checks i-checks-sm"> <input type="radio"
+								ng-model="codeRule.resetType" value="2"   ng-disabled="show"><i></i>否
+							</label>
+						</div>
+					</div>
+					</div>
+			</div>
+		</div>
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">返 回</button>
+</div>

@@ -1,0 +1,28 @@
+<div>
+	<div class="bg-light lter b-b wrapper">
+		<h1 class="m-n font-thin h4">设定日期</h1>
+	</div>
+
+	<div class="modal-body ">
+		<form name="form" class="form-validation" novalidate ng-enter="">
+			<div class="form-group pull-in clearfix">
+					<div class="col-sm-12">
+					<label>&nbsp;</label>
+					<div class="input-group m-d">
+						<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="date"
+							is-open="tdate" datepicker-options="dateOptions" ng-required="true" close-text="Close" /> 
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="openDatepicker($event,0)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success" ng-click="save()" ng-disabled="form.$invalid">确 定</button>
+		<button class="btn btn-default" ng-click="cancel()">返 回</button>
+	</div>
+</div>

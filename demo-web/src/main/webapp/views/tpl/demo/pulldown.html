@@ -1,0 +1,124 @@
+
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">复数拆解示例</h1>
+</div>
+
+<div class="wrapper" ng-controller="PullDownController" >
+<div ng-printable>
+<form name="form">
+
+<div class="row" >
+    <div class="col-md-2">总剩余待拆解金额：{{totalRemain}}</div>
+    <div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-click="showAll=true;" >查询所有</button>
+	</div>
+	<div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-click="showAll=false;" >显示可分解</button>
+	</div>
+   	<div class="col-md-1" >
+		<button class="btn btn-primary form-control" ng-click="submitTable()">提交表单</button>
+	</div>
+   	<div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-print-button>打印PDF</button>
+	</div>	
+	<div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-click="downloadPdf()" >下载PDF</button>
+	</div>
+	
+	<div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-click="exportExcel()" >导出Excel</button>
+	</div>
+
+	<div class="col-md-1" >
+		<button class="btn btn-success form-control" ng-click="exportCsv()" >导出Csv</button>
+	</div>
+	
+</div>
+<hr>
+<div class="row" id="printArea">	
+
+	<div class="col-md-12" ng-show="showAll==false">
+		<table ng-show="paymentItemGroup[group].rows>0" class="bg-white table table-striped left-table-header" ng-repeat="(group,items) in paymentItemGroup">
+			<tr><th colspan="6">支付表：{{group}}: {{paymentItemGroup[group].rows}}</th></tr>
+		    <tr>
+		    	<th>选择</td>		    
+		    	<th>ROW</td>
+				<th>NAME</td>
+				<th>计划</td>
+				<th>剩余</td>
+				<th>扣款</td>
+			</tr>
+			<tr ng-repeat-start="item in items"  ng-if="item.remain1 > 0 || item.deduct1 > 0" name="{{group}}-tr">
+				<td><input type="checkbox" ng-model="chkboxs[group][$index*3 ]"  id="{{group}}"
+				ng-change="chkChanged(group,item.row,1)" 
+				ng-false-value="undefined" ng-true-value="'{{item.row}}'" /></td>
+				<td >{{item.row}}</td>
+				<td >{{item.name1}}</td>
+				<td>{{item.plan1}}</td>
+				<td>{{item.remain1}}</td>
+				<td>{{item.deduct1}}</td>
+			</tr>
+			<tr ng-if="item.remain2 > 0 || item.deduct2 > 0 " name="{{group}}-tr">
+				<td><input type="checkbox" ng-model="chkboxs[group][$index*3+1]" id="{{group}}"
+				ng-change="chkChanged(group,item.row,2)"  
+				ng-false-value="undefined" ng-true-value="'{{item.row}}'" /></td>
+				<td >{{item.row}}</td>
+				<td >{{item.name2}}</td>
+				<td>{{item.plan2}}</td>
+				<td>{{item.remain2}}</td>
+				<td>{{item.deduct2}}</td>
+				
+			</tr>
+			<tr ng-repeat-end ng-if="item.remain3 > 0 || item.deduct3 > 0 " on-finish-render-filters name="{{group}}-tr">
+				<td><input type="checkbox" ng-model="chkboxs[group][$index*3+2]" id="{{group}}"
+				ng-change="chkChanged(group,item.row,3)"  
+				ng-false-value="undefined" ng-true-value="'{{item.row}}'"/></td>
+				<td >{{item.row}}</td>
+				<td >{{item.name3}}</td>
+				<td>{{item.plan3}}</td>
+				<td>{{item.remain3}}</td>
+				<td>{{item.deduct3}}</td>
+			</tr>
+		</table>     
+	</div>
+
+	<div id="pdfArea" class="col-md-12" ng-show="showAll!=false">
+		<table id="{{group}}-tb"class="bg-white table table-striped left-table-header" ng-repeat="(group,items) in testDataGroupAll">
+			<tr><th colspan="5">支付表格:{{group}}: {{document.getElementById('G-A-tr').length}}</th></tr>
+		    <tr>  
+		    	<td>ROW</td>
+				<td>NAME</td>
+				<td>计划</td>
+				<td>剩余</td>
+				<td>扣款</td>
+			</tr>
+			<tr ng-repeat-start="item in items" >
+				<td >{{item.row}}</td>
+				<td >{{item.name1}}</td>
+				<td>{{item.plan1}}</td>
+				<td>{{item.remain1}}</td>
+				<td><input type="text" readonly="true" size="20" class="form-control" value="item.deduct1"/></td>
+			</tr>
+			<tr>
+				<td >{{item.row}}</td>
+				<td >{{item.name2}}</td>
+				<td>{{item.plan2}}</td>
+				<td>{{item.remain2}}</td>
+				<td><input type="text" readonly="true" size="20" class="form-control"  value="{{item.deduct2}}"/></td>				
+			</tr>
+			<tr ng-repeat-end>
+				<td >{{item.row}}</td>
+				<td >{{item.name3}}</td>
+				<td>{{item.plan3}}</td>
+				<td>{{item.remain3}}</td>
+				<td><input type="text" readonly="true" size="20" class="form-control"  value="{{item.deduct3}}"/></td>
+			</tr>
+		</table>     
+	</div>
+
+
+</div>
+
+</form>
+</div>
+</div>

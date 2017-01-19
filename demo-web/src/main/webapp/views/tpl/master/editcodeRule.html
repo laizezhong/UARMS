@@ -1,0 +1,79 @@
+<!--
+<div class="modal-header">
+    <h3 class="modal-title">添加节点</h3>
+</div>
+-->
+<div class="modal-body ">
+        <form name="form" class="form-validation"  novalidate>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span class="h4">{{title}}</span>
+            </div>
+            <div class="panel-body">
+			<div class="form-group pull-in clearfix">
+			  <div class="col-sm-6">
+	                <button  class="btn m-b-xs btn-sm btn-default btn-addon" ui-toggle-class="button" ng-click="push1()"   ng-model="codeRule.code"  ><i class="fa fa-plus pull-right text"></i><i class="fa fa-minus pull-right text-active"></i>流水号</button>
+	                <button  class="btn m-b-xs btn-sm btn-default btn-addon" ui-toggle-class="button" ng-click="push4()"   ng-model="codeRule.year"  ><i class="fa fa-plus pull-right text"></i><i class="fa fa-minus pull-right text-active"></i>年份</button>
+	                <button  class="btn m-b-xs btn-sm btn-default btn-addon" ui-toggle-class="button" ng-click="push5()"   ng-model="codeRule.Month"  ><i class="fa fa-plus pull-right text"></i><i class="fa fa-minus pull-right text-active"></i>月份</button>
+	                <button  class="btn m-b-xs btn-sm btn-default btn-addon" ui-toggle-class="button" ng-click="push8()"   ng-model="codeRule.Customer"  ><i class="fa fa-plus pull-right text"></i><i class="fa fa-minus pull-right text-active"></i>客户类型</button>
+			  </div>
+              <div class="col-sm-6">
+                <label>表达式：<span style="color: red;"> *</span></label>
+                    <span class="error-info"
+								ng-show="(form.expression.$dirty|| submitTried) && form.expression.$invalid ">
+								<span ng-show="form.expression.$error.required">必须</span>
+							</span>
+                <input type="text" class="form-control" name="expression" ng-model="codeRule.expression"   required > 
+              </div>
+                  <div class="col-sm-6">
+                <label>类型：<span style="color: red;"> *</span></label>
+                <span class="error-info"
+								ng-show="(form.type.$dirty|| submitTried) && form.type.$invalid ">
+								<span ng-show="form.type.$error.required">必须</span>
+							</span>
+                
+                  <select class="form-control" name="type" ng-model="codeRule.type"  ng-disabled="eidtMode"
+					ng-options="opt.id as opt.name for opt in types" required>
+                      <option></option>
+				  </select>
+              </div>
+              <div class="col-sm-6">
+                <label>流水线号：</label>
+                    <input type="text" class="form-control" ng-model="codeRule.serial"  >
+ 
+              </div>
+              <div class="col-sm-6">
+                <label>流水号长度：<span style="color: red;"> *</span></label>
+							<span class="error-info ng-hide" ng-show="(form.mtnFeeTotal.$dirty || submitTried)&amp;&amp; form.mtnFeeTotal.$invalid " style="">
+            			<span ng-show="form.mtnFeeTotal.$error.required" class="ng-hide" style="">必须</span>
+            			<span ng-show="form.mtnFeeTotal.$error.maxlength" class="ng-hide" style="">流水线长度在1~99</span>
+                		<span ng-show="form.mtnFeeTotal.$error.pattern"   class="ng-hide" style="">输入错误</span>
+           			</span>
+                <input type="text" class="form-control" name="mtnFeeTotal" ng-pattern="/^[0-9]+(\.[0-9]+)?$/"  ng-maxlength="2" ng-model="codeRule.serialLength" ng-disabled="eidtMode" required >
+              </div>
+           <div class="col-sm-6">
+						<label>每年重置：<span style="color: red;"> *</span></label>
+						<span class="error-info"
+								ng-show="(form.resetType.$dirty|| submitTried) && form.resetType.$invalid ">
+								<span ng-show="form.resetType.$error.required">必须</span>
+							</span>
+						<div class="radio">
+							<label class="i-checks i-checks-sm"> <input type="radio"
+							required	ng-model="codeRule.resetType" name="resetType" value="1"><i></i>是
+							</label> <label class="i-checks i-checks-sm"> <input type="radio"
+							required	ng-model="codeRule.resetType" name="resetType" value="2"><i></i>否
+							</label>
+						</div>
+					</div>
+			
+            </div>
+          </div>
+          </div>
+          
+        </form>
+
+</div>
+<div class="modal-footer">
+		<button class="btn btn-default" ng-click="cancel()">取 消</button>
+		<button class="btn btn-success" ng-disabled="form.$invalid" ng-click="save(form.$invalid)">确  定</button>
+</div>

@@ -1,0 +1,74 @@
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">银行账户管理</h1>
+</div>
+
+<div class="wrapper" ng-controller="BankAccountController">
+	<div class="row">
+		<div class="col col-md-12">
+        <form name="form" class="form-validation">
+          <div class="panel panel-default">
+            <div class="panel-body bg-light" style="padding:5px;padding-left:0px;">
+              	<div class="col-sm-3">
+	               <label>银行名称：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.bankName" >
+	             </div>
+	             <div class="col-sm-3">
+	               <label>账号：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.account" >
+	             </div>
+              	<div class="col-sm-3">
+	               <label>开户人：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.accountName" >
+	             </div>
+	             <div class="col-md-1">
+	               <label>&nbsp;</label> 
+                   <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="search()"><i class="fa fa-search"></i> 查 询</button>
+                 </div>
+            </div>
+          </div>
+        </form>
+		</div>
+	</div>
+
+	<div class="row">
+	  <div class="col col-md-12">
+      <!-- <div class="panel panel-default"> -->
+
+	  <table  class="bg-white table table-striped left-table-header" ng-table="tableParamsBankAccount" show-filter="false">
+          <thead ng-if="$data.length>0" class="bg-info">
+            <tr>
+            
+			 
+			  <th>序号</th>
+              <th>银行名称</th>    <!-- 来自bank表 -->
+			  <th>开户人</th>
+			  <th>银行编号</th>    <!-- 来自bank表 -->
+			  <th>账号类型</th>
+			  <th>账号</th>
+			  <th>开户公司</th>    <!-- 来自company表 -->
+			  <th>开户人电话</th>
+			  <th>创建者</th>
+			  <th has-any-permission="['BANK_ACCOUNT_VIEW','BANK_ACCOUNT_EDIT','BANK_ACCOUNT_DELETE']">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="bankAccount in $data">
+			  <td>{{$index + 1}}</td>
+			  <td>{{bankAccount.bankName}}</td>
+			  <td>{{bankAccount.accountName}}</td>
+			  <td>{{bankAccount.bankCode}}</td>
+			  <td>{{accountTypes[bankAccount.accountType]}}</td>
+			  <td>{{bankAccount.account}}</td>
+			  <td>{{bankAccount.name}}</td>
+			  <td>{{bankAccount.phone}}</td>
+			  <td>{{userNames[bankAccount.creator]}}</td>
+              <td has-any-permission="['BANK_ACCOUNT_VIEW','BANK_ACCOUNT_EDIT','BANK_ACCOUNT_DELETE']">
+                  <a has-permission="BANK_ACCOUNT_VIEW" style="color:#0099FF" ng-click="view({{bankAccount}})">查看</a>&nbsp; 
+                  <a has-permission="BANK_ACCOUNT_EDIT" style="color:#0099FF" ng-click="edit({{bankAccount}})">修改</a>&nbsp; 
+                  <a has-permission="BANK_ACCOUNT_DELETE" style="color:#0099FF" ng-click="logicalDel({{bankAccount}})">删除</a></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>

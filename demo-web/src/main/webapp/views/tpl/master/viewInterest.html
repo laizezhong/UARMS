@@ -1,0 +1,64 @@
+<!--
+<div class="modal-header">
+    <h3 class="modal-title">添加节点</h3>
+</div>
+-->
+<div class="modal-body ">
+	<form name="form" class="form-validation">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="h4">查看</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+					
+				     <div class="col-sm-6" disable-all="true">
+				          <label>时间<span style="color:red;"> *</span>：</label>
+				            <div class="input-group m-d">
+				              <input type="text" class="form-control" datepicker-popup="{{format}}" 
+				                     ng-model="interest.interestDate" is-open="interestDate" 
+				                     datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+				              <span class="input-group-btn">
+				              <button type="button" class="btn btn-default" ng-click="openDatepicker($event,0)"><i class="glyphicon glyphicon-calendar"></i></button>
+				            </span>
+				         </div>
+				      </div>
+				    <div class="col-sm-6">
+					<label>半年<span style="color:red;"> *</span>：</label> 
+					  <input type="text" class="form-control" value="{{interest.halfYear}}%" readonly="true">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>一年<span style="color:red;"> *</span>：</label> 
+						<input type="text" class="form-control" value="{{interest.oneYear}}%" readonly="true">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>三年<span style="color:red;"> *</span>：</label> 
+						<input type="text" class="form-control" value="{{interest.threeYear}}%" readonly="true">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>五年<span style="color:red;"> *</span>：</label> 
+						<input type="text" class="form-control" value="{{interest.fiveYear}}%" readonly="true">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>五年以上<span style="color:red;"> *</span>：</label> 
+						<input type="text" class="form-control" value="{{interest.fiveYearAbove}}%" readonly="true">
+					</div>
+					
+					<div class="col-sm-6">
+						<label>备注：</label> 
+						<input type="text" class="form-control" ng-model="interest.notes" readonly="true">
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">返  回</button>
+</div>

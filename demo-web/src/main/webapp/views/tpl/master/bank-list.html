@@ -1,0 +1,88 @@
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">银行管理</h1>
+</div>
+
+<div class="wrapper" ng-controller="BankController">
+	<div class="row">
+		<div class="col col-md-12">
+        <form name="form" class="form-validation">
+          <div class="panel panel-default">
+            <div class="panel-body bg-light" style="padding:5px;padding-left:0px;">
+              	<div class="col-sm-3">
+	               <label>银行名称：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.bankName" >
+	             </div>
+	             	<div class="col-sm-3">
+	               <label>银行编号：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.bankCode" >
+	             </div>
+	             <div class="col-md-1">
+	               <label>&nbsp;</label> 
+                  <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="search()"><i class="fa fa-search"></i> 查 询</button>
+                 </div>
+                    <div class="col-md-1 col-md-offset-4 pull-right">
+	               <label>&nbsp;</label> 
+                   <button has-permission="BANK_CREATE" class="btn btn-success" ng-disabled="form.$invalid" ng-click="create()"><i class="fa fa-plus"></i> 新  建</button> 
+                 </div>
+            </div>
+          </div>
+        </form>
+		</div>
+	</div>
+
+<!-- 
+	<div class="row">
+		<div class="col col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body bg-light" style="padding:5px;padding-left:0px;">
+	             <div class="col-md-2">
+                   <button class="btn btn-primary form-control" ng-click="create()">新 建</button>
+                 </div>
+            </div>
+          </div>
+		</div>
+	</div>
+ -->
+	<div class="row">
+	  <div class="col col-md-12">
+      <!-- <div class="panel panel-default"> -->
+
+	  <table  class="bg-white table table-striped left-table-header" ng-table="tableParamsBank" show-filter="false">
+          <thead ng-if="$data.length>0" class="bg-info">
+            <tr>
+			  <th>序号</th>
+			   <th>银行名称</th>
+			   <th>银行类型</th>
+			  <th>银行编号</th>
+			  <th>联系人</th>
+			  <th>联系电话</th>
+			  <th>创建者</th>
+			  <th has-any-permission="['BANK_VIEW','BANK_EDIT','BANK_DELETE','BANK_ACCOUNT_CREATE']">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="bank in $data">
+			  <td>{{$index + 1}}</td>
+			   <td>{{bank.bankName}}</td>
+			   <td>{{bankTypess[bank.bankType]}}</td>
+              <td>{{bank.bankCode}}</td>
+			  <td>{{bank.contactName}}</td>
+			   <td>{{bank.contactPhone}}</td>
+			  <td>{{userNames[bank.creator]}}</td>
+		
+			  <td has-any-permission="['BANK_VIEW','BANK_EDIT','BANK_DELETE','BANK_ACCOUNT_CREATE']">
+			    <a style="color:#0099FF" has-permission="BANK_VIEW"  ng-click="view({{bank}})">查看</a>&nbsp;
+			    <a style="color:#0099FF" has-permission="BANK_EDIT" ng-click="edit({{bank}})">修改</a>&nbsp;
+			    <a style="color:#0099FF" has-permission="BANK_DELETE" ng-click="logicalDel({{bank}})">删除</a>&nbsp;
+			    <a style="color:#0099FF" has-permission="BANK_ACCOUNT_CREATE" ng-click="createbankaccount({{bank}})">增加账号</a>&nbsp;
+		
+			  </td>
+
+            </tr>
+          </tbody>
+        </table>
+      <!-- </div> -->
+    </div>
+
+
+</div>

@@ -1,0 +1,56 @@
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">用户管理</h1>
+</div>
+
+<div class="wrapper" ng-controller="TenantController">
+	<div class="row">
+		<div class="col col-md-8">
+        <form name="form" class="form-validation">
+          <div class="panel panel-default">
+            <div class="panel-body bg-light" style="padding:5px;padding-left:0px;">
+              	<div class="col-sm-3">
+	               <label>用户名：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.username" >
+	             </div>
+	             <div class="col-md-2">
+	               <label>&nbsp;</label> 
+                   <button class="btn btn-primary form-control" ng-disabled="form.$invalid" ng-click="search()">检   索</button>
+                 </div>
+            </div>
+          </div>
+        </form>
+		</div>
+	</div>
+
+	<div class="row">
+	  <div class="col col-md-8">
+      <!-- <div class="panel panel-default"> -->
+
+	  <table  class="bg-white table table-striped left-table-header" ng-table="tableParamsTenants" show-filter="false">
+          <thead ng-if="$data.length>0" class="bg-info">
+            <tr>
+			  <th>No.</th>
+			  <th>用户名</th>
+              <th>是否失效</th>
+			  <th>是否锁定</th>
+			  <th>注册时间</th>
+			  <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="tenant in $data">
+			  <td>{{$index + 1}}</td>
+              <td>{{tenant.username}}</td>
+			  <td>{{tenant.accountExpired}}</td>
+			  <td>{{tenant.accountLocked}}</td>
+			  <td>{{tenant.createDatetime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+			  <td>删除</td>
+
+            </tr>
+          </tbody>
+        </table>
+      <!-- </div> -->
+    </div>
+
+
+</div>

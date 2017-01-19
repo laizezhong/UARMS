@@ -1,0 +1,378 @@
+<div ng-controller="editSellerController">
+<div class="bg-light lter b-b wrapper">
+	  <h1 class="m-n font-thin h3">查看</h1>
+</div>
+<div class="modal-body" >
+	<form name="form" class="form-validation" ng-enter="">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="h4">出卖方信息</span>
+			</div>
+			<div class="panel-body" disable-all="true">
+				<div class="form-group pull-in clearfix">
+
+					<div class="col-sm-4">
+						<label>出卖方所属品牌/厂商：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerBrand"  >
+					</div>
+					<div class="col-sm-4">
+						<label>联系人名称：</label> <input type="text" class="form-control"
+							ng-model="seller.contactName"  >
+					</div>
+					<div class="col-sm-4">
+						<label>出卖方名称：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerName"  >
+					</div>
+					<div class="col-sm-4">
+						<label>联系人电话：</label> <input type="text" class="form-control"
+							ng-model="seller.phone"  >
+					</div>
+					<div class="col-sm-4">
+						<label>简称：</label> <input type="text" class="form-control"
+							ng-model="seller.shortName"  >
+					</div>
+					<div class="col-sm-4">	
+						<label>类型：</label>
+						<select class="form-control"
+								ng-model="seller.sellerType"  
+								ng-options="opt.id as opt.name for opt in sellerTypes">
+								<option></option>
+							</select>
+							<!-- <div class="input-group">	
+								  <ui-select ng-model="seller.sellerType" theme="bootstrap"> 
+						            <ui-select-match>{{$select.selected.name}}</ui-select-match>
+						            <ui-select-choices  repeat="item.id as item in sellerTypes | filter: $select.search">
+						              <div ng-bind-html="item.name | highlight: $select.search"></div>
+						            </ui-select-choices>
+						          </ui-select>
+								  <span class="input-group-btn">
+						              <button ng-click="seller.sellerType=null;" class="btn btn-default">
+						                <span class="glyphicon glyphicon-trash"></span>
+						              </button>
+						          </span>
+								</div> -->
+					</div>
+					<div class="col-sm-4">
+						<label>企业性质：</label>
+						<input type="text" class="form-control"
+							value="{{sellerNature[seller.sellerNature]}}"  >
+					</div>
+					<div class="col-sm-4">
+							<label>三证合一：</label> 
+							<select class="form-control"
+								ng-model="seller.businessCodeType"  
+								ng-options="opt.id as opt.name for opt in businessCodeTypes">
+								<option></option>
+							</select>
+							<!-- <div class="input-group">	
+								  <ui-select ng-model="seller.businessCodeType" theme="bootstrap"> 
+						            <ui-select-match>{{$select.selected.name}}</ui-select-match>
+						            <ui-select-choices  repeat="item.id as item in businessCodeTypes | filter: $select.search">
+						              <div ng-bind-html="item.name | highlight: $select.search"></div>
+						            </ui-select-choices>
+						          </ui-select>
+								  <span class="input-group-btn">
+						              <button ng-click="seller.businessCodeType=null;" class="btn btn-default">
+						                <span class="glyphicon glyphicon-trash"></span>
+						              </button>
+						          </span>
+								</div> -->
+						</div>
+						<div class="col-sm-4">
+						<label>统一社会信用代码：</label> <input type="text" class="form-control"
+							ng-model="seller.creditCode"  >
+					</div>
+					<div class="col-sm-4">
+						<label>营业执照注册号：</label> <input type="text" class="form-control"
+							ng-model="seller.license"  >
+					</div>
+					<div class="col-sm-4">
+						<label>组织机构代码号：</label> <input type="text" class="form-control"
+							ng-model="seller.orgCode"  >
+					</div>
+					<div class="col-sm-4">
+						<label>税务登记号：</label> <input type="text" class="form-control"
+							ng-model="seller.taxNum"  >
+					</div>
+					<div class="form-group">
+			            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+			            	<label>成立日期：</label>
+				              	<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="seller.foundDate"  >
+			          </div>
+			        </div>
+					<div class="col-sm-4">
+						<label>出卖方传真：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerFax" ng-currency >
+					</div>
+					<div class="col-sm-4">
+						<label>注册资本：(单位：万元)</label> <input type="text" class="form-control"
+							value="{{seller.regCapital | currency:'￥'}}"  >
+					</div>
+					<div class="col-sm-4">
+						<label>出卖方邮编：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerPostcode"  >
+					</div>
+					<div class="form-group">
+			            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+			            	<label>营业有效期：</label>
+				              	<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="seller.expireDate"  />
+			          </div>
+			        </div>
+					<div class="col-sm-4">
+							<label>是否回购：</label> 
+							<select class="form-control"
+								ng-model="seller.buybackType"  
+								ng-options="opt.id as opt.name for opt in buybackTypes">
+								<option></option>
+							</select>
+							<!-- <div class="input-group">	
+								  <ui-select ng-model="seller.buybackType" theme="bootstrap"> 
+						            <ui-select-match>{{$select.selected.name}}</ui-select-match>
+						            <ui-select-choices  repeat="item.id as item in buybackTypes | filter: $select.search">
+						              <div ng-bind-html="item.name | highlight: $select.search"></div>
+						            </ui-select-choices>
+						          </ui-select>
+								  <span class="input-group-btn">
+						              <button ng-click="seller.buybackType=null;" class="btn btn-default">
+						                <span class="glyphicon glyphicon-trash"></span>
+						              </button>
+						          </span>
+								</div> -->
+						</div>
+					<div class="col-sm-4">
+						<label>注册地址：</label> <input type="text" class="form-control"
+							ng-model="seller.regAddress"  >
+					</div>
+					<div class="col-sm-4">
+						<label>出卖方地址：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerAddress"  >
+					</div>
+					<div class="col-sm-4">
+						<label>区域：</label> <input type="text" class="form-control"
+							ng-model="seller.area"  >
+					</div>
+					<div class="col-sm-4">
+						<label>出卖方网址：</label> <input type="text" class="form-control"
+							ng-model="seller.sellerWebsite"  >
+					</div>
+					<div class="form-group">
+			            <div class="col-sm-4" ng-controller="DatepickerDemoCtrl">
+			            	<label>合作有效期：</label>
+				              	<input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="seller.partnershipExpire"   />
+			          </div>
+			        </div>		
+					<div class="col-sm-12">
+							<label>经营范围：</label> <textarea style="resize:none;outline:none;" 
+							clos="30" rows="3" class="form-control" ng-model="seller.scope"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 法人代表信息 -->
+		<div class="panel panel-default" disable-all="true">
+			<div class="panel-heading" disable-all="true">
+				<span class="h4">法人代表信息</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+
+					<div class="col-sm-4">
+						<label>法人代表：</label> <input type="text" class="form-control"
+							ng-model="seller.legalName"  >
+					</div>
+					<div class="col-sm-4">
+						<label>身份证号：</label> <input type="text" class="form-control"
+							ng-model="seller.legalId"  >
+					</div>
+					<div class="col-sm-4">
+						<label>办公电话：</label> <input type="text" class="form-control"
+							ng-model="seller.legalPhone"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码：</label> <input type="text" class="form-control"
+							ng-model="seller.legalMobile1"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码2：</label> <input type="text" class="form-control"
+							ng-model="seller.legalMobile2"  >
+					</div>
+					<div class="col-sm-4">
+						<label>EMAIL：</label> <input type="text" class="form-control"
+							ng-model="seller.legalEmail"  >
+					</div>
+					<div class="col-sm-12">
+						<label>常住地址：</label> <input type="text" class="form-control"
+							ng-model="seller.legalAddress"  >
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 委托代理人信息 -->
+		<div class="panel panel-default" disable-all="true">
+			<div class="panel-heading" disable-all="true">
+				<span class="h4">委托代理人信息</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+
+					<div class="col-sm-4">
+						<label>委托代理人：</label> <input type="text" class="form-control"
+							ng-model="seller.poaName"  >
+					</div>
+					<div class="col-sm-4">
+						<label>身份证号：</label> <input type="text" class="form-control"
+							ng-model="seller.poaId"  >
+					</div>
+					<div class="col-sm-4">
+						<label>办公电话：</label> <input type="text" class="form-control"
+							ng-model="seller.poaPhone"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码：</label> <input type="text" class="form-control"
+							ng-model="seller.poaMobile1"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码2：</label> <input type="text" class="form-control"
+							ng-model="seller.poaMobile2"  >
+					</div>
+					<div class="col-sm-4">
+						<label>EMAIL：</label> <input type="text" class="form-control"
+							ng-model="seller.poaEmail"  >
+					</div>
+					<div class="col-sm-12">
+						<label>常住地址：</label> <input type="text" class="form-control"
+							ng-model="seller.poaAddress"  >
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 紧急联系人信息 -->
+		<div class="panel panel-default" disable-all="true">
+			<div class="panel-heading" disable-all="true">
+				<span class="h4">紧急联系人信息</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+
+					<div class="col-sm-4">
+						<label>联系人：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactName"  >
+					</div>
+					<div class="col-sm-4">
+						<label>身份证号：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactId"  >
+					</div>
+					<div class="col-sm-4">
+						<label>联系人职务：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactPosition"  >
+					</div>
+					<div class="col-sm-4">
+						<label>办公电话：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactPhone"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactMobile1"  >
+					</div>
+					<div class="col-sm-4">
+						<label>手机号码2：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactMobile2"  >
+					</div>
+					<div class="col-sm-4">
+						<label>EMAIL：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactEmail"  >
+					</div>
+					<div class="col-sm-12">
+						<label>常住地址：</label> <input type="text" class="form-control"
+							ng-model="seller.uContactAddress"  >
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 开户行信息 -->
+		<div class="panel panel-default">
+				<div class="panel-heading" disable-all="true">
+					<div class="row">
+						<span class="h4">&nbsp;开户行信息</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel-body">
+						<table class="bg-gray table table-striped left-table-header"  style="margin-bottom:0px;">
+							<thead ng-if="tableData.length>0" class="bg-info"
+								ng-table="tableParamsBank">
+								<tr>
+									<th>开户银行</th>
+									<th>账号</th>
+									<th>所在地</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="sellerBank in tableData">
+									<td>{{sellerBank.bankName}}</td>
+									<td>{{sellerBank.bankAccount}}</td>
+									<td>{{sellerBank.bankAddress}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 备注 -->
+			<div class="panel panel-default" disable-all="true">
+				<div class="panel-heading" disable-all="true">
+					<span class="h4">备注</span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group pull-in clearfix">
+						<div class="col-sm-12">
+							<textarea class="form-control" rows="5"
+									ng-model="seller.remark"  >
+							</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading" disable-all="true">
+					<span class="h4">附件</span>
+				</div>
+				<div class="panel-body">
+					<div class="form-group pull-in clearfix">
+						<div class="col-sm-12">
+							<div class="col-sm-3"><label>营业执照复印件：</label> </div>
+							<a ng-click="showImg(seller.licenseCopyUrl)">&nbsp;预览</a>
+						</div>
+						<div class="col-sm-12">
+							<div class="col-sm-3"><label>法人代表身份证正面复印件：</label></div>
+							<a ng-click="showImg(seller.legalIdFrontUrl)">&nbsp;预览</a>
+						</div>
+						<div class="col-sm-12">
+							<div class="col-sm-3"><label>法人代表身份证反面复印件：</label></div>
+							<a ng-click="showImg(seller.legalIdBackUrl)">&nbsp;预览</a>
+						</div>
+						<div class="col-sm-12">
+							<div class="col-sm-3"><label >合作协议复印件：</label> </div>
+							<a ng-click="showImg(seller.agreementUrl)">&nbsp;预览</a>
+						</div>		
+						<div class="col-sm-12">
+							<div class="col-sm-3"><label>其他附件：</label></div>
+							<a ng-click="showImg(seller.otherAttachmentUrl)">&nbsp;预览</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="back()">返 回</button>
+</div>		
+
+</div>

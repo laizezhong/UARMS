@@ -1,0 +1,22 @@
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">文件上传示例</h1>
+</div>
+
+<div class="wrapper" ng-controller="FileUploadController">
+
+	<hr>
+	<div class="row">
+		<div class="col-md-2">
+            <label>用户头像：</label> 
+            <button ng-disabled="fileURL" class="btn btn-primary form-control" ng-click="upload()">上传头像</button>
+        </div>
+	</div>
+	<hr>
+	<div class="row">
+	    <div class="col-md-8">
+               <label>图片展示：{{fileURL}}</label> 
+               <img src="{{fileURL}}"/>
+               <!-- <img src="upload/test/bdf3bf1da3405725be763540d6601144.jpg"/> -->
+        </div>
+	</div>
+</div>

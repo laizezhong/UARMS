@@ -1,0 +1,28 @@
+
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">手动跑批测试</h1>
+</div>
+
+<div class="wrapper" ng-controller="JobController">
+	<form name="form">
+	
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-body bg-light">
+						<div class="alert ng-isolate-scope alert-success alert-dismissable"  style="text-align: center;">
+				              <span class="ng-binding ng-scope">手动跑批：以设定的日期作为今天的日期 , 更新 rent_period、rent_overdue、leasing_overdue ！
+					              <br>使用方式：找到leasing-admin/src/main/resources/mybatis/JobMapper.xml文件,{call leasing.rent_overdue_update_proc(?, ?)} 中'leasing'修改为你的数据库名
+					              <br>修改后请在本地测试使用，不要提交代码！！！  
+				              </span>
+			       	 	</div>
+			       	 	<div class="col-sm-2" style="margin-left: 40%;">
+							<button class="btn btn-success form-control" ng-click="setDate()">设定时间</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</form>
+</div>

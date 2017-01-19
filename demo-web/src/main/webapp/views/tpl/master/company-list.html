@@ -1,0 +1,67 @@
+<div class="bg-light lter b-b wrapper">
+  <h1 class="m-n font-thin h3">公司管理</h1>
+</div>
+
+<div class="wrapper" ng-controller="CompanyController">
+	<div class="row">
+		<div class="col col-md-12">
+        <form name="form" class="form-validation">
+          <div class="panel panel-default">
+            <div class="panel-body bg-light" style="padding:5px;padding-left:0px;">
+              	<div class="col-sm-3">
+	               <label>公司名称/简称：</label> 
+	               <input type="text" class="form-control"  ng-model="searcher.allName" >
+	             </div>
+	             <div class="col-md-1">
+	               <label>　</label> 
+                    <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="search()"><i class="fa fa-search"></i> 查 询</button>
+                 </div>
+                 <div class="col-md-1 col-md-offset-4 pull-right">
+	               <label>　</label> 
+                  <button has-permission="COMPANY_CREATE" class="btn btn-success" ng-disabled="form.$invalid" ng-click="create()"><i class="fa fa-plus"></i> 新  建</button> 
+                 </div>
+            </div>
+          </div>
+        </form>
+		</div>
+	</div>
+
+
+	<div class="row">
+	  <div class="col col-md-12">
+      <!-- <div class="panel panel-default"> -->
+
+	  <table  class="bg-white table table-striped left-table-header" ng-table="tableParamsCompany" show-filter="false">
+          <thead ng-if="$data.length>0" class="bg-info">
+            <tr>
+			  <th>序号</th>
+			  <th>公司名称</th>
+              <th>公司级别</th>
+			  <th>简称</th>
+			  <th>联系人</th>
+			  <th>联系人手机号码</th>
+			 <!--  <th>创建者</th> -->
+			  <th has-any-permission="['COMPANY_VIEW','COMPANY_EDIT','COMPANY_DELETE']">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="company in $data">
+			  <td>{{$index + 1}}</td>
+              <td>{{company.name}}</td>
+			  <td>{{level[company.level]}}</td>
+			  <td>{{company.shortName}}</td>
+			  <td>{{company.contactName}}</td>
+			  <td>{{company.contactMobile}}</td>
+			<!--   <td>{{userNames[company.creator]}}</td> -->
+			 <td has-any-permission="['COMPANY_VIEW','COMPANY_EDIT','COMPANY_DELETE']">
+			 <a has-permission="COMPANY_VIEW" style="color:#0099FF" ng-click="view(company.id)">查看</em></a>&nbsp;
+			 <a has-permission="COMPANY_EDIT"  style="color:#0099FF" ng-click="edit(company.id)">修改</em></a>&nbsp;
+			 <a has-permission="COMPANY_DELETE" style="color:#0099FF" ng-click="logicalDel({{company}})">删除</em></a>&nbsp; 
+             </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>
+</div>

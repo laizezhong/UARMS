@@ -1,0 +1,86 @@
+<!--
+<div class="modal-header">
+    <h3 class="modal-title">添加节点</h3>
+</div>
+-->
+<div class="modal-body ">
+        <form name="form" class="form-validation"  novalidate>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <span class="h4">{{title}}</span>
+            </div>
+            <div class="panel-body">
+			<div class="form-group pull-in clearfix">
+			  <div class="col-sm-6">
+                <label>银行名称<span style="color: red;"> *</span>：</label>
+                <input type="text" class="form-control" ng-model="bankAccount.bankName" readonly="true" required>
+              </div>
+			  
+			  <div class="col-sm-6">
+                <label>银行编号<span style="color: red;"> *</span>：</label>
+                <input type="text" class="form-control" ng-model="bankAccount.bankCode" readonly="true" required>
+              </div>
+              
+              <div class="col-sm-6">
+						  <label>开户公司<span style="color: red;"> *</span>：</label>
+						  <span class="error-info" ng-if="(form.contactName.$dirty|| submitTried) && form.contactName.$invalid ">
+								<span ng-if="form.contactName.$error.required">必须</span>
+						</span>
+		                   <ui-select ng-model="bankAccount.companyId" theme="bootstrap" required> 
+	                         <ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
+	                           <ui-select-choices  repeat="item.id as item in company | filter: $select.search">
+	                             <div ng-bind-html="item.name | highlight: $select.search"></div>
+	                             <small ng-bind-html="item.rolecode | highlight: $select.search"></small>
+	                         </ui-select-choices>
+	                      </ui-select>
+	                  </div>
+              
+              <div class="col-sm-6">
+                <label>开户人：</label>
+                <input type="text" class="form-control" ng-model="bankAccount.accountName"  >
+              </div>
+              <div class="col-sm-6">
+                <label>开户人电话：</label>
+               		<span class="error-info"
+								ng-if="(form.phone.$dirty|| submitTried) && form.phone.$invalid ">
+							<span ng-if="form.phone.$error.maxlength">最多20位数</span></span>
+                <input type="text"  ng-maxlength="20"   class="form-control" ng-model="bankAccount.phone"  name="phone" requied>
+              </div>
+              <div class="col-sm-6">
+                <label>账号类型：</label>
+                  <select class="form-control" ng-model="bankAccount.accountType"
+					ng-options="opt.id as opt.name for opt in accountTypes">
+					<option></option>
+				  </select>
+              </div>
+              <div class="col-sm-6">
+          
+                <label>账号<span style="color: red;"> *</span>：</label><span class="error-info" ng-if="(form.account.$dirty  || submitTried)&& form.account.$invalid " style>
+                	<span ng-if="form.account.$error.required">必须</span>
+<!--             <span ng-if="form.account.$error.pattern" class="ng-scope">请输入数字</span> -->
+            <span ng-if="form.account.$error.maxlength" class="ng-hide">超出长度范围</span>
+                </span>
+                <input type="text" class="form-control" ng-maxlength="20"  ng-pattern="/^[0-9]*$/"  name="account" ng-model="bankAccount.account"   required> 
+              </div>
+              <div class="col-sm-6">
+                <label>账号别名：</label>
+                <input type="text" class="form-control" ng-model="bankAccount.accountAlias">
+              </div>
+              <div class="col-sm-6">
+                <label>备注：</label>
+                <input type="text" class="form-control" ng-model="bankAccount.notes">
+<!--                 <input type="text" ng-model="bankAccount.bankId" style="display: none;"/>
+<!--                 <input type="text" ng-model="bankAccount.companyId" style="display: none;"/> --> 
+              </div>
+
+			</div>
+            </div>
+          </div>
+        </form>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">取 消</button>
+	<button class="btn btn-success" ng-disabled="form.$invalid"
+		ng-click="save()">确 定</button>
+</div>

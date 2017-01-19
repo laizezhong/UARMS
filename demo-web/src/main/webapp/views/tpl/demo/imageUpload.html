@@ -1,0 +1,59 @@
+<div>
+	<div class="modal-body ">
+		<form name="form" class="form-validation" novalidate>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="h4">{{title}}</span>
+				</div>
+				<div class="panel-body">
+					<div>
+						<!-- <input ui-jq="filestyle" type="file" nv-file-select="" uploader="uploader" /> -->
+						<input type="file" nv-file-select="" uploader="uploader"
+							data-buttonText="选择图片文件" />
+					</div>
+					<hr>
+
+					<div class="row">
+
+						<!-- <p>{{ uploader.queue.length }}</p>  -->
+
+						<table class="table" width="100%">
+							<thead>
+								<tr>
+									<th>图片预览</th>
+									<th ng-show="uploader.isHTML5">文件大小</th>
+									<th>删除</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in uploader.queue">
+									<td> <!-- <strong>{{ item.file.name }}</strong>  -->
+										<div ng-show="uploader.isHTML5"
+											ng-thumb="{ file: item._file, width:350}"></div></td>
+									<td ng-show="uploader.isHTML5" nowrap
+										ng-class="{'text-danger':item.file.size/1024/1024 > 5, 'text-success':item.file.size/1024/1024 <= 5 }">{{
+										item.file.size/1024/1024|number:2 }} MB</td>
+									<td nowrap>
+										<button type="button" class="btn btn-danger btn-xs"
+											ng-click="item.remove()">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="cancel()">取消</button>
+		<button class="btn btn-success" ng-click="save()"
+			ng-disabled="uploader.queue.length != 1">确 定上传</button>
+	</div>
+
+</div>

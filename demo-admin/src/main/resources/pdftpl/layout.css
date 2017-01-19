@@ -1,0 +1,74 @@
+@page{
+
+/*     @top-right {
+        content: element(header); 
+        vertical-align: bottom;
+        padding-bottom: 10px;
+    } 
+    
+     @bottom-left {                 
+        content: element(footer);  
+        vertical-align: top;
+        padding-top: 10px;
+    } */
+    
+	@top-center { 
+		content: element(header);
+		vertical-align: bottom;
+        padding-bottom: 10px;
+	}
+
+	@bottom-center { 
+		content: element(footer);
+		vertical-align: top;
+        padding-top: 10px;
+	}
+  
+   /*  size: A4 portrait; */
+    size: A4 landscape;
+    margin-top:2cm; 
+    margin-left:1cm; 
+    margin-right:1cm; 
+    margin-bottom:2cm; 
+}
+
+
+#pagenumber:before {
+    content: counter(page);
+}
+
+#pagecount:before {
+    content: counter(pages);
+}
+
+/* body {
+  font-family: SimSun;
+  font-size: 14px;
+}
+
+div {
+  margin: 0;
+} */
+
+div.with-break {
+  page-break-before: always;
+}
+
+
+div.header {
+    display: block; text-align: center; 
+    position: running(header);
+    border-bottom: 1px solid black;
+}
+div.footer {
+    display: block; text-align: center;
+    position: running(footer);
+    border-top: 1px solid black; 
+}
+
+div.content {page-break-after: always;}
+
+/* h1 { color: #00f; }
+h2 { color: #00f; }
+
+p { line-height: 15px; margin-bottom: 15px; } */

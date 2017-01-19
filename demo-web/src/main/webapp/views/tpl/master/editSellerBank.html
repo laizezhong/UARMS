@@ -1,0 +1,45 @@
+<div class="modal-body ">
+	<form name="form" class="form-validation" novalidate ng-enter="">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="h4">{{title}}</span>
+			</div>
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+
+					<div class="col-sm-4">
+						<label>开户银行<span style="color:red;"> *</span>：</label> 
+						<span class="error-info" ng-if="form.bankName.$dirty && form.bankName.$invalid ">
+                				<span ng-if="form.bankName.$error.required">必须</span>
+               			</span>
+               			<input type="text" class="form-control"
+							ng-model="sellerBank.bankName" required name="bankName">
+					</div>
+					<div class="col-sm-4">
+						<label>账号<span style="color:red;"> *</span>：</label> 
+						<span class="error-info" ng-if="form.bankAccount.$dirty && form.bankAccount.$invalid ">
+                				<span ng-if="form.bankAccount.$error.required">必须</span>
+               			</span>
+               			<input type="text" class="form-control"
+							ng-model="sellerBank.bankAccount" required name="bankAccount">
+					</div>
+					<div class="col-sm-4">
+						<label>银行所在地<span style="color:red;"> *</span>：</label> 
+						<span class="error-info" ng-if="form.bankAddress.$dirty && form.bankAddress.$invalid ">
+                				<span ng-if="form.bankAddress.$error.required">必须</span>
+               			</span>
+               			<input type="text" class="form-control"
+							ng-model="sellerBank.bankAddress" required name="bankAddress">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">取 消</button>
+	<button class="btn btn-success" ng-disabled="form.$invalid"
+		ng-click="saveBank()">确 定</button>
+</div>
+
+

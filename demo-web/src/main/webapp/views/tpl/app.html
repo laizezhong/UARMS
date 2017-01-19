@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+  <!-- navbar -->
+  <div data-ng-include=" 'views/tpl/blocks/header.html' " class="app-header navbar">
+  </div>
+
+  <!-- / navbar -->
+
+  <!-- menu -->
+  <div data-ng-include=" 'views/tpl/blocks/aside.html' " class="app-aside hidden-xs {{app.settings.asideColor}}">
+  </div>
+  <!-- / menu -->
+
+  <!-- content -->
+  <div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up" ui-view></div>
+  </div>
+   
+<!--    <span shiro:principal property="name"></span> -->
+  <!-- /content -->
+
+
+  <!-- footer -->
+  <div class="app-footer wrapper b-t bg-light" style="z-index:1;text-align: center;">
+    <span class="pull-right">Ver 1.0<a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+    &copy; 2016 DEMO  · 联系我们 · 京 ICP 备 13052560 号 · 赣公网安备 88888888888888 号
+  </div>
+  <!-- / footer -->
+
+
+  <div data-ng-include=" 'views/tpl/blocks/settings.html' " class="settings panel panel-default">
+  </div>
+</html>

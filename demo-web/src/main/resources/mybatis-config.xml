@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 命名空间 -->
+    <!-- 
+    <typeAliases>
+    	<typeAlias alias="Company" type="com.ray.demo.admin.model.master.Company"/>
+    	<typeAlias alias="Bank" type="com.ray.demo.admin.model.master.Bank"/>
+    </typeAliases>
+ 	-->
+ 
+    <typeHandlers>
+        <typeHandler javaType="Boolean" jdbcType="BIT"
+                     handler="com.ray.framework.util.framework.Bit2booleanTypeHandler"/>
+    </typeHandlers>
+
+    <!-- 映射map -->
+    <mappers>
+        <!--<mapper resource="/mybatis/UserMapper.xml"/>-->
+    </mappers>
+</configuration>
