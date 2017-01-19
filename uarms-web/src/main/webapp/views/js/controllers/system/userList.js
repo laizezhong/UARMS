@@ -1,4 +1,4 @@
-﻿app.controller('LoginCtrl', ['$scope', 'Restangular' ,'ngTableParams', 'dialogs', 'toaster', 
+﻿app.controller('UserController', ['$scope', 'Restangular' ,'ngTableParams', 'dialogs', 'toaster', 
 	function($scope, Restangular, NgTableParams, dialogs, toaster) {
 
 	$scope.genders = {1:'男', 2:'女'};

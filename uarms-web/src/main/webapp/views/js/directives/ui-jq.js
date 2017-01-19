@@ -1,6 +1,6 @@
 'use strict';
 
-/** 
+/**
  * 0.1.1
  * General-purpose jQuery wrapper. Simply pass the plugin name as the expression.
  *
