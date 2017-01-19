@@ -20,8 +20,26 @@
 	
 	};
 	
+	var addauth = function () {
+		var dlg = dialogs.create('views/tpl/master/editBank.html','editBankController',{},{size:'md','backdrop':'static'});
+		dlg.result.then(function(bank){
+			Restangular.all('master/banks').post(bank).then(function(result) {
+	    		if (result) {
+	    			toaster.pop('success', '', '新建银行数据成功！');
+	    			search();
+	    		}	
+			}, function(errResponse) {
+				console.log("Error with status code", errResponse.status);
+			}); 
+
+		},function(){
+			console.log("Cancelled");
+		});
+    };
+	
     search();
     
     $scope.search = search;
+    $scope.addauth = addauth;
     
 }]);
