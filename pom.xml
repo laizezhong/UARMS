@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ray</groupId>
-  <artifactId>demo-all</artifactId>
+  <artifactId>uarms-all</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>demo v${project.version}</name>
   <modules>
-  	<module>demo-base</module>
-  	<module>demo-admin</module>
- 	<module>demo-task</module>
-    <module>demo-web</module>
+  	<module>uarms-base</module>
+  	<module>uarms-admin</module>
+ 	<module>uarms-task</module>
+    <module>uarms-web</module>
   </modules>
   
       <properties>

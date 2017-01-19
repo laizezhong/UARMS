@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.ray</groupId>
-    <artifactId>demo-all</artifactId>
+    <artifactId>uarms-all</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>demo-task</artifactId>
-  <name>demo-task</name>
+  <artifactId>uarms-task</artifactId>
+  <name>uarms-task</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
