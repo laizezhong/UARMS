@@ -21,11 +21,11 @@
 	};
 	
 	var addauth = function () {
-		var dlg = dialogs.create('views/tpl/master/editBank.html','editBankController',{},{size:'md','backdrop':'static'});
-		dlg.result.then(function(bank){
-			Restangular.all('master/banks').post(bank).then(function(result) {
+		var dlg = dialogs.create('views/tpl/system/editAuth.html','EditAuthController',{},{size:'md'});
+		dlg.result.then(function(permission){
+			Restangular.all('system/auths').post(permission).then(function(result) {
 	    		if (result) {
-	    			toaster.pop('success', '', '新建银行数据成功！');
+	    			toaster.pop('success', '', '新建权限成功！');
 	    			search();
 	    		}	
 			}, function(errResponse) {
@@ -43,3 +43,30 @@
     $scope.addauth = addauth;
     
 }]);
+
+
+app.controller('EditAuthController',function($scope,Restangular,$modalInstance,data,LeasingCommon,toaster ){
+
+	$scope.title = "增加权限";
+	$scope.permission = {};
+	$scope.show=false;
+	
+	if (data.permission) {
+		$scope.title = "修改权限";
+		$scope.show=true;
+		$scope.permission = data.permission;
+	}
+	
+	$scope.cancel = function(){
+		$modalInstance.dismiss('Canceled');
+	};
+	
+	$scope.save = function(isNotValid){
+		if (isNotValid) {
+			toaster.pop('warning', '', '页面输入项有非法数据存在，请按提示修改后再提交！');
+		} else {
+			$modalInstance.close($scope.permission);
+		}
+	};
+});
+

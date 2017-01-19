@@ -1,0 +1,29 @@
+<div class="modal-body">
+	<form name="form" class="form-validation" novalidate>
+		<div class="panel panel-default">
+		
+			<div class="panel-heading">
+				<span class="h4">{{title}}</span>
+			</div>
+			
+			<div class="panel-body">
+				<div class="form-group pull-in clearfix">
+					<div class="col-sm-6">
+						<label>银行名称<span style="color: red;"> *</span>：</label>
+						<span class="error-info" ng-if="(form.bankName.$dirty || submitTried) && form.bankName.$invalid  ">
+                			<span ng-if="form.bankName.$error.required">必须</span>
+                		</span> 
+		                <input type="text" class="form-control" name="bankName"  ng-model="bank.bankName" required ng-disabled="show">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</form>
+</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="cancel()">取 消</button>
+	<button class="btn btn-success" ng-click="save(form.$invalid)">确 定</button>
+</div>
