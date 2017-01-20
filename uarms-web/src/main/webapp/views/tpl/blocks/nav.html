@@ -11,59 +11,6 @@
            <span>首页</span>
     </a>
   </li>
-  <li has-permission="MENU_DEMO_VIEW" ng-class="{active:$state.includes('app.demo')}">
-    <a href class="auto">      
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="icon-note icon text-lg text-info-lter"></i>
-      <span class="font-bold">测试页面</span>
-    </a>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo1')>-1}">
-        <a ui-sref="app.demo.demo1-list">
-          <span>银行管理(非弹窗)</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo2')>-1}">
-        <a ui-sref="app.demo.demo2-list">
-          <span>银行管理(弹窗)</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo3')>-1}">
-        <a ui-sref="app.demo.demo3-fileupload">
-          <span>文件上传示例</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo4')>-1}">
-        <a ui-sref="app.demo.demo4-test">
-          <span>各种小测试</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo5')>-1}">
-        <a ui-sref="app.demo.demo5-pulldown">
-          <span>复数拆解示例</span>
-        </a>
-      </li>
-    </ul>
-    <ul class="nav nav-sub dk">
-      <li ng-class="{active:$state.current.name.indexOf('app.demo.demo6')>-1}">
-        <a ui-sref="app.demo.demo6-charts">
-          <span>Charts示例</span>
-        </a>
-      </li>
-    </ul>
-  </li>
-
  
   <li has-permission="MENU_MASTER_SETTING" ng-class="{active:$state.includes('app.s1')}">
     <a href class="auto">      
@@ -72,7 +19,7 @@
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
       <i class="icon-grid icon text-lg text-info-lter"></i>
-      <span class="font-bold">实际案例</span>
+      <span class="font-bold">测试案例</span>
     </a>
      <ul has-any-permission="['COMPANY_CREATE','COMPANY_EDIT','COMPANY_DELETE','COMPANY_VIEW']" class="nav nav-sub dk">
       <li ng-class="{'active':$state.current.name.indexOf('app.s1.company')>-1}">
@@ -116,7 +63,7 @@
     <ul has-permission="PERMISSION_VIEW" class="nav nav-sub dk">
       <li ui-sref-active="active">
         <a ui-sref="app.s2.auth-list">
-          <span>系统权限一览</span>
+          <span>系统权限</span>
         </a>
       </li>
     </ul>
