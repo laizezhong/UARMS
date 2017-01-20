@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ray.framework.util.SecurityUtil;
 import com.ray.demo.admin.manager.BaseManager;
 import com.ray.demo.admin.model.system.Permission;
 import com.ray.demo.admin.model.system.PermissionExample;
@@ -28,6 +27,7 @@ import com.ray.demo.admin.service.system.RolePermissionService;
 import com.ray.demo.admin.service.system.RoleService;
 import com.ray.demo.admin.service.system.UserRoleService;
 import com.ray.demo.admin.service.system.UserService;
+import com.ray.framework.util.SecurityUtil;
 
 @Component
 public class SystemManager extends BaseManager{
@@ -137,6 +137,18 @@ public class SystemManager extends BaseManager{
 		} 
 		
 		return permissionService.selectByExample(permExample);
+	}
+	
+	public int addAuth(Permission permission){
+		return permissionService.insert(permission);
+	}
+	
+	public int editAuth(Permission permission){
+		return permissionService.updateByPrimaryKeySelective(permission);
+	}
+	
+	public int deleteAuth(Long id){
+		return permissionService.deleteByPrimaryKey(id);
 	}
 	
 	public List<SysRole> getRolesByName(String roleName){

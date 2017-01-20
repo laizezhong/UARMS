@@ -22,7 +22,7 @@
                  </div>
                  <div class="col-md-1  pull-right">
 	               <label>　</label> 
-                   <button class="btn btn-success" ng-disabled="form.$invalid" ng-click="addauth()"><i class="fa fa-plus"></i> 新  建</button> 
+                   <button class="btn btn-success" ng-disabled="form.$invalid" ng-click="addAuth()"><i class="fa fa-plus"></i> 新  建</button> 
                  </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
 			  <th>权限组</th>
 			  <th>权限名称</th>
 			  <th>权限代码</th>
-			  <!-- <th>URL</th> -->
+			  <th>操作</th>
             </tr>
           </thead>
           <tbody>
@@ -50,7 +50,10 @@
 			  <td>{{auth.groupName}}</td>
 			  <td>{{auth.name}}</td>
               <td>{{auth.permission}}</td>
-			  <!-- <td>{{auth.url}}</td> -->
+			  <td>
+			  	<a style="color:#0099FF" ng-click="editAuth({{auth}})">编辑&nbsp;</a>
+			  	<a style="color:#0099FF" ng-click="deleteAuth({{auth}})">删除&nbsp;</a>
+		  	  </td>
 
             </tr>
           </tbody>

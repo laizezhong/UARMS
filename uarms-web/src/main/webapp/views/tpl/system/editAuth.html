@@ -8,13 +8,34 @@
 			
 			<div class="panel-body">
 				<div class="form-group pull-in clearfix">
-					<div class="col-sm-6">
+					<!-- <div class="col-sm-6">
 						<label>银行名称<span style="color: red;"> *</span>：</label>
 						<span class="error-info" ng-if="(form.bankName.$dirty || submitTried) && form.bankName.$invalid  ">
                 			<span ng-if="form.bankName.$error.required">必须</span>
                 		</span> 
 		                <input type="text" class="form-control" name="bankName"  ng-model="bank.bankName" required ng-disabled="show">
-					</div>
+					</div> -->
+					<div class="col-sm-6">
+		               <label>权限组<span style="color: red;"> *</span>：</label> 
+		               <span class="error-info" ng-if="(form.groupName.$dirty || submitTried) && form.groupName.$invalid  ">
+                			<span ng-if="form.groupName.$error.required">必须</span>
+                		</span> 
+		               <input type="text" class="form-control"  ng-model="permission.groupName" required>
+		             </div>
+	              	<div class="col-sm-6">
+		               <label>权限名<span style="color: red;"> *</span>：</label> 
+		               <span class="error-info" ng-if="(form.namee.$dirty || submitTried) && form.name.$invalid  ">
+                			<span ng-if="form.name.$error.required">必须</span>
+                		</span> 
+		               <input type="text" class="form-control"  ng-model="permission.name" required>
+		             </div>
+	              	<div class="col-sm-6">
+		               <label>权限代码<span style="color: red;"> *</span>：</label> 
+		               <span class="error-info" ng-if="(form.permisson.$dirty || submitTried) && form.permisson.$invalid  ">
+                			<span ng-if="form.permisson.$error.required">必须</span>
+                		</span> 
+		               <input type="text" class="form-control"  ng-model="permission.permission" required>
+		             </div>
 				</div>
 			</div>
 			

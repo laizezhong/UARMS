@@ -260,4 +260,40 @@ public class SystemController extends BaseController {
 		}
 	}
 	
+	@RequestMapping(value = "/auths", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<RestResultResponse> addAuth(@RequestBody Permission permisson) {
+		try {
+
+			Object ob = manager.addAuth(permisson);
+			
+			return new ResponseEntity<RestResultResponse>(this.buildSuccessRestResultResponse(ob), HttpStatus.OK);
+
+		} catch (Exception ex) {
+			return new ResponseEntity<RestResultResponse>(this.buildErrorRestResultResponse(ex),
+					HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+	
+	@RequestMapping(value = "/auths/{id}", method = RequestMethod.PUT, consumes = "application/json")
+	public ResponseEntity<RestResultResponse> editAuth(@RequestBody Permission permisson){
+		try {
+			Object ob = manager.editAuth(permisson);
+			return new ResponseEntity<RestResultResponse>(this.buildSuccessRestResultResponse(ob), HttpStatus.OK);
+		} catch (Exception ex) {
+		return new ResponseEntity<RestResultResponse>(this.buildErrorRestResultResponse(ex),
+				HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+	
+	@RequestMapping(value = "/auths/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+	public ResponseEntity<RestResultResponse> deleteAuth(@PathVariable("id") long id){
+		try {
+			Object ob = manager.deleteAuth(id);
+			return new ResponseEntity<RestResultResponse>(this.buildSuccessRestResultResponse(ob), HttpStatus.OK);
+		} catch (Exception ex) {
+		return new ResponseEntity<RestResultResponse>(this.buildErrorRestResultResponse(ex),
+				HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+	
 }

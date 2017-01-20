@@ -20,7 +20,7 @@
 	
 	};
 	
-	var addauth = function () {
+	var addAuth = function () {
 		var dlg = dialogs.create('views/tpl/system/editAuth.html','EditAuthController',{},{size:'md'});
 		dlg.result.then(function(permission){
 			Restangular.all('system/auths').post(permission).then(function(result) {
@@ -36,11 +36,46 @@
 			console.log("Cancelled");
 		});
     };
+    
+    var editAuth = function (auth) {
+    	var dlg = dialogs.create('views/tpl/system/editAuth.html','EditAuthController',{'permission':auth},{size:'md'});
+		dlg.result.then(function(updAuth){
+			Restangular.one('system/auths', updAuth.id).customPUT(updAuth).then(function(result) {
+	    		if (result) {
+	    			toaster.pop('success', '', '修改权限成功！');
+	    			search();
+	    		}	
+			}, function(errResponse) {
+				console.log("Error with status code", errResponse.status);
+			}); 
+
+		},function(){
+			console.log("Cancelled");
+		});
+    };
+    
+    var deleteAuth = function (auth) {
+    	var dlg = dialogs.confirm("删除确认","您确认要删除此权限吗？", {'size': 'sm'});
+		dlg.result.then(function(btn){
+			Restangular.one('system/auths',auth.id).remove().then(function(result) {
+	    		if (result) {
+	    			toaster.pop('success', '', '删除权限成功！');
+	    			search();
+	    		}	
+			}, function(errResponse) {
+				console.log("Error with status code", errResponse.status);
+			}); 
+		},function(){
+			console.log("Cancelled");
+		});
+    };
 	
     search();
     
     $scope.search = search;
-    $scope.addauth = addauth;
+    $scope.addAuth = addAuth;
+    $scope.editAuth = editAuth;
+    $scope.deleteAuth = deleteAuth;
     
 }]);
 
