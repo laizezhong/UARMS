@@ -42,7 +42,7 @@
         <jdbc.version>5.1.29</jdbc.version>
         <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 
-        <db.name>uarms</db.name>
+        <db.name>uarms_test</db.name>
         <druid.version>1.0.2</druid.version>
 
         <!--��־����-->
