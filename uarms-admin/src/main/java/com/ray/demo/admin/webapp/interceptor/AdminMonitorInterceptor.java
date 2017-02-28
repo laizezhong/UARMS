@@ -69,20 +69,6 @@ public class AdminMonitorInterceptor extends HandlerInterceptorAdapter {
     private String getUserName(HttpServletRequest request) {
     	
     	return "DevPhase";
-    	//TODO commented for development phase only
-//    	Subject subject = SecurityUtils.getSubject();
-//    	SessionObject principal = (SessionObject)subject.getPrincipal();
-//        if(principal!=null){
-//        	String activeSubMenu = (String) subject.getSession().getAttribute("activeSubMenu");
-//        	if(StringUtils.isBlank(activeSubMenu)){
-//        		subject.getSession().setAttribute("activeSubMenu",request.getRequestURI());
-//        	}else if(request.getRequestURI().indexOf("/list") > -1){
-//        		subject.getSession().setAttribute("activeSubMenu",request.getRequestURI());
-//        	}
-//            return principal.getUser().getUsername();
-//        }else {
-//            return null;
-//        }
     }
 
     /**

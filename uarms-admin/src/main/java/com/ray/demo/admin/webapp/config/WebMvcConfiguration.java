@@ -27,7 +27,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setTemplateMode("LEGACYHTML5");
-        //templateResolver.setOrder(Ordered.LOWEST_PRECEDENCE);
         templateResolver.setCacheable(false);
         return templateResolver;
     }
@@ -36,30 +35,16 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter{
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(defaultTemplateResolver());
-        //templateEngine.addDialect(new LayoutDialect());
         templateEngine.addDialect(new ShiroDialect());
         return templateEngine;
     }
 	
-//    @Bean
-//    public ViewResolver tileViewResolver() {
-//        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-//        viewResolver.setTemplateEngine(templateEngine());
-//        viewResolver.setCharacterEncoding("UTF-8");
-//        viewResolver.setContentType("text/html;charset=UTF-8");
-//        viewResolver.setOrder(Ordered.LOWEST_PRECEDENCE);
-//        viewResolver.setCache(false);
-//        viewResolver.setViewClass(ThymeleafView.class);
-//        return viewResolver;
-//    }
-    
 	@Bean
 	public ViewResolver viewResolver(SpringTemplateEngine templateEngine) {
 
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine);
 		viewResolver.setCharacterEncoding("UTF-8");
-		// viewResolver.setOrder(1);
 		viewResolver.setViewNames(new String[] { "*" });
 		viewResolver.setCache(false);
 		return viewResolver;

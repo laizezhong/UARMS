@@ -146,15 +146,7 @@ angular.module('app')
 	$scope.editMode=false;
 	$scope.pwdMode = data.pwdMode;
 	
-	Restangular.one('master/companies').get("").then(function(result) {
-		if (result.length < 1) {
-			toaster.pop('warning', '', '没有公司找到公司信息');
-		}
-		$scope.companies = result;
-	}, function(errResponse) {
-		console.log("Error with status code", errResponse.status);
-	});
-	
+	$scope.companies = "";
 	
 	if (data.user) {	
 		$scope.title = "修改用户";

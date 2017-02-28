@@ -14,9 +14,9 @@
   </modules>
   
       <properties>
-		<!--ͳһ�ַ�������-->
+		<!--统一字符集编码-->
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--�������-->
+       <!--框架配置-->
         <dao.framework>mybatis</dao.framework>
         <web.framework>springMvc</web.framework>
 
@@ -25,7 +25,7 @@
         <mybatis.version>3.2.6</mybatis.version>
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
 
-        <!--comon���������-->
+        <!--comon包相关配置-->
         <commons.beanutils.version>1.8.3</commons.beanutils.version>
         <commons.collections.version>3.2.1</commons.collections.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
@@ -35,7 +35,7 @@
         <commons.fileupload.version>1.3</commons.fileupload.version>
         <commons.io.version>2.4</commons.io.version>
 
-        <!--���ݿ�����-->
+        <!--数据库配置-->
         <!--<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>-->
         <jdbc.groupId>mysql</jdbc.groupId>
         <jdbc.artifactId>mysql-connector-java</jdbc.artifactId>
@@ -45,25 +45,26 @@
         <db.name>uarms_test</db.name>
         <druid.version>1.0.2</druid.version>
 
-        <!--��־����-->
+       <!--日志配置-->
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.3</logback.version>
 
-        <!--servlet�������-->
+        <!--servlet相关配置-->
         <jsp.version>2.1</jsp.version>
         <servlet.version>3.1.0</servlet.version>
         <jstl.version>1.2</jstl.version>
-        <!--ҳ��װ����-->
+        <!--页面装饰器-->
         <sitemesh.version>2.4.2</sitemesh.version>
-        <!--json����-->
+        <!--json操作-->
         <fastjson.version>1.1.36</fastjson.version>
-        <!--url����-->
+        <!--url美化-->
         <urlrewrite.version>3.2.0</urlrewrite.version>
 		<!-- jackson -->
 		<jackson.core.asl.version>1.9.13</jackson.core.asl.version>
 		<jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>
     </properties>
 
+	<!-- tomcat1.7 plugin -->
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
@@ -92,7 +93,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--spring �������-->
+            <!--spring 相关配置-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
@@ -135,13 +136,13 @@
                 <version>${spring.version}</version>
             </dependency>
 
-            <!-- mybatis ������� -->
+            <!-- mybatis 相关配置 -->
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
             </dependency>
-            <!-- mybatis/spring�� -->
+            <!-- mybatis/spring包 -->
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis-spring</artifactId>
@@ -169,28 +170,23 @@
 	            <artifactId>shiro-ehcache</artifactId>
 	            <version>${shiro.version}</version>
 	        </dependency>
-	        
-
-	        
 	        <!-- shiro end -->
 
-            <!-- ����Ͱ�����Դ�� -->
+            <!-- 阿里巴巴数据源包 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
 
-            <!-- ���ݿ������� -->
+            <!-- 数据库驱动包 -->
             <dependency>
                 <groupId>${jdbc.groupId}</groupId>
                 <artifactId>${jdbc.artifactId}</artifactId>
                 <version>${jdbc.version}</version>
             </dependency>
 
-
-
-            <!--��־�������-->
+            <!--日志相关配置-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -207,7 +203,7 @@
                 <version>${logback.version}</version>
             </dependency>
 
-            <!--common�������-->
+            <!--common相关配置-->
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
@@ -260,7 +256,7 @@
                 <version>${commons.io.version}</version>
             </dependency>
 
-            <!--servlet ���-->
+            <!--servlet 相关-->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
@@ -268,7 +264,7 @@
                 <scope>provided</scope>
             </dependency>
             
-            <!-- ����jackson -->
+            <!-- 定义jackson -->
             <dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-core-asl</artifactId>
@@ -280,7 +276,7 @@
 				<version>${jackson.mapper.asl.version}</version>
 			</dependency>
 			
-			<!-- ���Կ��TestNG��JUnit -->
+			<!-- 测试框架TestNG、JUnit -->
             <dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -299,12 +295,12 @@
         <profile>
             <id>dev_env</id>
             <properties>
-                <!--���ݿ�����-->
+                <!--开发环境配置-->
                 <jdbc.url>jdbc:mysql://localhost/${db.name}?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
                 <jdbc.username>root</jdbc.username> 
                 <jdbc.password>root</jdbc.password>
 
-                <log.root.path>C:/tmp/logs/demo</log.root.path>
+                <log.root.path>D:/tmp/logs/uarms</log.root.path>
                 <login.validIP>192.168.10.*#0:0:0:0:0:0:0:1#127.0.0.1</login.validIP>
             </properties>
             <activation>
@@ -314,24 +310,24 @@
         <profile>
             <id>test_env</id>
             <properties>
-                <!--���ݿ�����-->
+                <!--测试环境配置-->
                 <jdbc.url>jdbc:mysql://localhost/${db.name}?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password>root</jdbc.password>
 
-                <log.root.path>C:/tmp/logs/demo</log.root.path>
+                <log.root.path>D:/tmp/logs/uarms</log.root.path>
                 <login.validIP>192.168.10.*#0:0:0:0:0:0:0:1#127.0.0.1</login.validIP>
             </properties>
         </profile>
         <profile>
             <id>online_env</id>
             <properties>
-                <!--���ݿ�����-->
+                <!--生产环境配置-->
                 <jdbc.url>jdbc:mysql://localhost/${db.name}?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true</jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password>root</jdbc.password>
 
-                <log.root.path>C:/tmp/logs/demo</log.root.path>
+                <log.root.path>D:/tmp/logs/uarms</log.root.path>
                 <login.validIP>192.168.10.*#0:0:0:0:0:0:0:1#127.0.0.1</login.validIP>
             </properties>
         </profile>
