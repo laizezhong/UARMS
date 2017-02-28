@@ -48,10 +48,10 @@
         <from>/favicon.ico</from>
         <to>/favicon.ico</to>
     </rule>
-<!--     <rule>
-        <from>/favicon.ico</from>
-        <to>/</to>
-    </rule> -->
+    <rule>
+        <from>/index</from>
+        <to>http://localhost:8080/#/index</to>
+    </rule>
 
     <!-- Spring MVC -->
 
