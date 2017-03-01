@@ -5,7 +5,7 @@
   <artifactId>uarms-all</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>demo v${project.version}</name>
+  <name>uarms v${project.version}</name>
   <modules>
   	<module>uarms-base</module>
   	<module>uarms-admin</module>
