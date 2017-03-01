@@ -19,7 +19,6 @@
     <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
     <result column="creator" jdbcType="BIGINT" property="creator" />
     <result column="updater" jdbcType="BIGINT" property="updater" />
-    <result column="company_id" jdbcType="BIGINT" property="companyId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -96,7 +95,7 @@
       This element was generated on Tue Sep 06 11:53:09 CST 2016.
     -->
     id, username, password, mobile, gender, email, realname, activestatus, createtime, 
-    updatetime, creator, updater, company_id
+    updatetime, creator, updater
   </sql>
   <select id="selectByExample" parameterType="com.ray.demo.admin.model.system.SysUserExample" resultMap="BaseResultMap">
     <!--
@@ -160,12 +159,12 @@
     insert into sys_user (username, password, mobile, 
       gender, email, realname, 
       activestatus, createtime, updatetime, 
-      creator, updater, company_id
+      creator, updater
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{gender,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
       #{activestatus,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{creator,jdbcType=BIGINT}, #{updater,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}
+      #{creator,jdbcType=BIGINT}, #{updater,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ray.demo.admin.model.system.SysUser">
@@ -212,9 +211,6 @@
       <if test="updater != null">
         updater,
       </if>
-      <if test="companyId != null">
-        company_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -249,9 +245,6 @@
       </if>
       <if test="updater != null">
         #{updater,jdbcType=BIGINT},
-      </if>
-      <if test="companyId != null">
-        #{companyId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -310,9 +303,6 @@
       <if test="record.updater != null">
         updater = #{record.updater,jdbcType=BIGINT},
       </if>
-      <if test="record.companyId != null">
-        company_id = #{record.companyId,jdbcType=BIGINT},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -336,8 +326,7 @@
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
       updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
       creator = #{record.creator,jdbcType=BIGINT},
-      updater = #{record.updater,jdbcType=BIGINT},
-      company_id = #{record.companyId,jdbcType=BIGINT}
+      updater = #{record.updater,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -383,9 +372,6 @@
       <if test="updater != null">
         updater = #{updater,jdbcType=BIGINT},
       </if>
-      <if test="companyId != null">
-        company_id = #{companyId,jdbcType=BIGINT},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -406,8 +392,7 @@
       createtime = #{createtime,jdbcType=TIMESTAMP},
       updatetime = #{updatetime,jdbcType=TIMESTAMP},
       creator = #{creator,jdbcType=BIGINT},
-      updater = #{updater,jdbcType=BIGINT},
-      company_id = #{companyId,jdbcType=BIGINT}
+      updater = #{updater,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <insert id="batchInsert">
@@ -415,14 +400,14 @@
             insert into sys_user  (username, password, mobile, 
         gender, email, realname, 
         activestatus, createtime, updatetime, 
-        creator, updater, company_id
+        creator, updater
         )
       values
       <foreach collection="items" item="item" index="index" separator=",">
       (#{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, 
         #{item.gender,jdbcType=INTEGER}, #{item.email,jdbcType=VARCHAR}, #{item.realname,jdbcType=VARCHAR}, 
         #{item.activestatus,jdbcType=TINYINT}, #{item.createtime,jdbcType=TIMESTAMP}, #{item.updatetime,jdbcType=TIMESTAMP}, 
-        #{item.creator,jdbcType=BIGINT}, #{item.updater,jdbcType=BIGINT}, #{item.companyId,jdbcType=BIGINT}
+        #{item.creator,jdbcType=BIGINT}, #{item.updater,jdbcType=BIGINT}
         )
       </foreach>
     </if>
